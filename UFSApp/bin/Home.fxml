@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.HomeController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="720.0" stroke="BLACK" strokeType="INSIDE" width="1280.0" />
+      <ImageView fx:id="Background" fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Home/background.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="s" fitHeight="720.0" fitWidth="1280.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Home/backdrop.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Home/GUI.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="meetingButton" alignment="CENTER" layoutX="512.0" layoutY="360.0" mnemonicParsing="false" onAction="#loadMeeting" prefHeight="62.0" prefWidth="255.0" text="Meeting Sign In" textAlignment="CENTER">
+         <font>
+            <Font name="Calisto MT Bold" size="22.0" />
+         </font>
+      </Button>
+      <Button fx:id="volunteerButton" alignment="CENTER" layoutX="513.0" layoutY="440.0" mnemonicParsing="false" onAction="#loadVolunteer" prefHeight="62.0" prefWidth="255.0" text="Volunteer Sign In" textAlignment="CENTER">
+         <font>
+            <Font name="Calisto MT Bold" size="22.0" />
+         </font>
+      </Button>
+      <Button fx:id="emailButton" alignment="CENTER" layoutX="513.0" layoutY="520.0" mnemonicParsing="false" onAction="#loadListOfEmails" prefHeight="62.0" prefWidth="255.0" text="List of Emails" textAlignment="CENTER">
+         <font>
+            <Font name="Calisto MT Bold" size="22.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="78.0" fitWidth="132.0" layoutX="7.0" layoutY="642.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/etc/utsalogo.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

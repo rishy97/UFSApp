@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MeetingSignInController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="720.0" stroke="BLACK" strokeType="INSIDE" width="1280.0" />
+      <ImageView fx:id="Background" fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/MeetingSignIn/background.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/MeetingSignIn/backdrop.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="TitleLabel" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="796.0" layoutY="264.0" prefHeight="58.0" prefWidth="357.0" text="Meeting Sign In" textAlignment="CENTER" textFill="#f2ffa6">
+         <font>
+            <Font name="Calisto MT Bold" size="48.0" />
+         </font>
+      </Label>
+      <Label fx:id="UserNameLabel" alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="529.0" layoutY="382.0" prefHeight="36.0" prefWidth="372.0" text="First Name:" textAlignment="RIGHT" textFill="#60b5ff">
+         <font>
+            <Font name="Calisto MT Bold" size="27.0" />
+         </font>
+      </Label>
+      <TextField fx:id="FirstNameField" layoutX="928.0" layoutY="382.0" prefHeight="43.0" prefWidth="247.0">
+         <font>
+            <Font name="Calisto MT Bold" size="18.0" />
+         </font>
+      </TextField>
+      <Label fx:id="ErrorLabel" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="742.0" layoutY="663.0" prefHeight="51.0" prefWidth="463.0" textAlignment="CENTER" textFill="#ff8a70">
+         <font>
+            <Font name="Calisto MT Bold" size="26.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="Image" fitHeight="214.0" fitWidth="400.0" layoutX="771.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/MeetingSignIn/ufslog.png" />
+         </image></ImageView>
+      <TextField fx:id="LastNameField" layoutX="928.0" layoutY="442.0" prefHeight="43.0" prefWidth="247.0">
+         <font>
+            <Font name="Calisto MT Bold" size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="EmailField" layoutX="928.0" layoutY="504.0" prefHeight="43.0" prefWidth="247.0">
+         <font>
+            <Font name="Calisto MT Bold" size="18.0" />
+         </font>
+      </TextField>
+      <Button fx:id="SignInButton" alignment="CENTER" layoutX="900.0" layoutY="607.0" mnemonicParsing="false" onAction="#loadNextScreen" prefHeight="43.0" prefWidth="157.0" text="Sign In" textAlignment="CENTER">
+         <font>
+            <Font name="Calisto MT Bold" size="22.0" />
+         </font>
+      </Button>
+      <Label fx:id="PasswordLabel" alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="529.0" layoutY="444.0" prefHeight="36.0" prefWidth="372.0" text="Last Name:" textAlignment="RIGHT" textFill="#60b5ff">
+         <font>
+            <Font name="Calisto MT Bold" size="27.0" />
+         </font>
+      </Label>
+      <Label fx:id="EmailLabel" alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="488.0" layoutY="505.0" prefHeight="36.0" prefWidth="417.0" text="Email:     " textAlignment="RIGHT" textFill="#60b5ff">
+         <font>
+            <Font name="Calisto MT Bold" size="27.0" />
+         </font>
+      </Label>
+      <Line endX="150.0" layoutX="949.0" layoutY="352.0" startX="-100.0" stroke="#ebffa6" strokeWidth="2.0" />
+      <Line endX="150.0" layoutX="949.0" layoutY="574.0" startX="-100.0" stroke="#ebffa6" strokeWidth="2.0" />
+   </children>
+</AnchorPane>
