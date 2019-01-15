@@ -34,6 +34,7 @@ public class HomeController implements Initializable {
 	@FXML
 	private Button emailButton;
 
+	@FXML
 	private AnchorPane anchorPane;
 
 	@FXML
@@ -47,12 +48,12 @@ public class HomeController implements Initializable {
 
     @FXML
     void loadVolunteer(ActionEvent event) {
-
+    	
     }
 
     @FXML
     void loadListOfEmails(ActionEvent event) {
-
+    	
     }
 
 	@Override
