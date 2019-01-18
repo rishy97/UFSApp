@@ -44,7 +44,7 @@ public class Organization {
 		return null;
 	}
 	
-	private String getEmailAddreses() {
+	public String getEmailAddreses() {
 		String result = "";
 		
 		if ( users.values().isEmpty() ) {

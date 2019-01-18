@@ -27,17 +27,17 @@
             <Image url="@../images/Home/GUI.png" />
          </image>
       </ImageView>
-      <Button fx:id="meetingButton" alignment="CENTER" layoutX="512.0" layoutY="360.0" mnemonicParsing="false" onAction="#loadMeeting" prefHeight="62.0" prefWidth="255.0" text="Meeting Sign In" textAlignment="CENTER">
+      <Button fx:id="meetingButton" alignment="CENTER" layoutX="512.0" layoutY="360.0" mnemonicParsing="false" onAction="#loadMeeting" prefHeight="62.0" prefWidth="255.0" text="Meeting Sign In" textAlignment="CENTER" textFill="#33120d">
          <font>
             <Font name="Calisto MT Bold" size="22.0" />
          </font>
       </Button>
-      <Button fx:id="volunteerButton" alignment="CENTER" layoutX="513.0" layoutY="440.0" mnemonicParsing="false" onAction="#loadVolunteer" prefHeight="62.0" prefWidth="255.0" text="Volunteer Sign In" textAlignment="CENTER">
+      <Button fx:id="volunteerButton" alignment="CENTER" layoutX="513.0" layoutY="440.0" mnemonicParsing="false" onAction="#loadVolunteer" prefHeight="62.0" prefWidth="255.0" text="Volunteer Sign In" textAlignment="CENTER" textFill="#33120d">
          <font>
             <Font name="Calisto MT Bold" size="22.0" />
          </font>
       </Button>
-      <Button fx:id="emailButton" alignment="CENTER" layoutX="513.0" layoutY="520.0" mnemonicParsing="false" onAction="#loadListOfEmails" prefHeight="62.0" prefWidth="255.0" text="List of Emails" textAlignment="CENTER">
+      <Button fx:id="emailButton" alignment="CENTER" layoutX="513.0" layoutY="520.0" mnemonicParsing="false" onAction="#loadListOfEmails" prefHeight="62.0" prefWidth="255.0" text="List of Emails" textAlignment="CENTER" textFill="#33120d">
          <font>
             <Font name="Calisto MT Bold" size="22.0" />
          </font>
@@ -47,5 +47,20 @@
             <Image url="@../images/etc/utsalogo.png" />
          </image>
       </ImageView>
+      <Label layoutX="497.0" layoutY="244.0" text="UTSA APP" textFill="#a6ddff">
+         <font>
+            <Font name="Calisto MT Bold" size="56.0" />
+         </font>
+      </Label>
+      <Label layoutX="491.0" layoutY="634.0" text="Created By: Rishabh Monga" textFill="#a6ddff">
+         <font>
+            <Font name="Calisto MT Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="553.0" layoutY="665.0" text="and Jordyn Ruiz" textFill="#a6ddff">
+         <font>
+            <Font name="Calisto MT Bold" size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

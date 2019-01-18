@@ -4,6 +4,7 @@
  */
 package application;
 	
+import application.model.Organization;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -13,6 +14,7 @@ import javafx.scene.layout.AnchorPane;
 public class Main extends Application {
 	public AnchorPane anchorpane;
 	public static Stage mainStage;
+	public static Organization ufs;
 	
 	/** start method - begins the application
 	 * @param primaryStage - Stage
@@ -28,6 +30,8 @@ public class Main extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.centerOnScreen();
 			primaryStage.show();
+			ufs = new Organization("Unite For Sight");
+			ufs.loadUsers("data/users.csv");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

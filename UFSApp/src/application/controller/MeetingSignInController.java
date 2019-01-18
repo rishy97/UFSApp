@@ -28,7 +28,6 @@ import javafx.scene.input.ClipboardContent;
 
 public class MeetingSignInController implements Initializable {
 	public static int validateValue;
-	private Organization ufs;
 
 	@FXML
 	private Button SignInButton;
@@ -133,18 +132,18 @@ public class MeetingSignInController implements Initializable {
 			return;
 		}
 		
-		if ( ufs.findUser(FirstNameField.getText(), LastNameField.getText()) == null && EmailField.getText().isEmpty() ) {
+		if ( Main.ufs.findUser(FirstNameField.getText(), LastNameField.getText()) == null && EmailField.getText().isEmpty() ) {
 			updateErrorField("New User, Please Enter Email");
 			return;
 		}
 		
-		if ( ufs.findUser(FirstNameField.getText(), LastNameField.getText()) != null) {
-			User temp = ufs.findUser(FirstNameField.getText(), LastNameField.getText());
+		if ( Main.ufs.findUser(FirstNameField.getText(), LastNameField.getText()) != null) {
+			User temp = Main.ufs.findUser(FirstNameField.getText(), LastNameField.getText());
 			
 			temp.setMeetings(temp.getMeetings() + 1);
 			temp.setLatestMeetingToToday();
 			updateErrorField("Success! Welcome back.");
-			ufs.saveUsers("data/users.csv");
+			Main.ufs.saveUsers("data/users.csv");
 			
 			FirstNameField.clear();
 			LastNameField.clear();
@@ -160,12 +159,12 @@ public class MeetingSignInController implements Initializable {
 			return;
 		}
 		
-		ufs.addUser(FirstNameField.getText(), LastNameField.getText(), EmailField.getText());
+		Main.ufs.addUser(FirstNameField.getText(), LastNameField.getText(), EmailField.getText());
 
-		User temp = ufs.findUser(FirstNameField.getText(), LastNameField.getText());
+		User temp = Main.ufs.findUser(FirstNameField.getText(), LastNameField.getText());
 		temp.setMeetings(1);
 		temp.setLatestMeetingToToday();
-		ufs.saveUsers("data/users.csv");
+		Main.ufs.saveUsers("data/users.csv");
 		
 		Volunteer newPerson = new Volunteer( temp.getFirstName(), temp.getLastName() );
 
@@ -186,8 +185,7 @@ public class MeetingSignInController implements Initializable {
 		/*
 		 * FXMLLoader loader = new FXMLLoader();
 		 * loader.setLocation(Main.class.getResource("../WandShop.fxml"));
-		 * this.anchorPane = (AnchorPane) loader.load(); Scene scene = new
-		 * Scene(anchorPane, 800, 800); Main.mainStage.setScene(scene);
+		 * this.anchorPane = (AnchorPane) loader.load(); Scene scene = new Scene(anchorPane, 800, 800); Main.mainStage.setScene(scene);
 		 * Main.mainStage.show();
 		 */
 		
@@ -204,9 +202,6 @@ public class MeetingSignInController implements Initializable {
 	 * initialize() method - starts the controller
 	 */
 	public void initialize(URL location, ResourceBundle resources) {
-		try {
-			ufs = new Organization("Unite For Sight");
-			ufs.loadUsers("data/users.csv");
 			this.TitleLabel.setText("Meeting Sign In");
 			this.UserNameLabel.setText("First Name:");
 			this.PasswordLabel.setText("Last Name:");
@@ -223,10 +218,6 @@ public class MeetingSignInController implements Initializable {
 
 			//Image image = new Image("file: " + "../../images/ufslog.png");
 			//this.Image.setImage(image);
-			
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
 	}
 
 }
