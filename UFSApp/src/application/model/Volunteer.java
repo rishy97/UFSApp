@@ -37,6 +37,13 @@ public class Volunteer {
 	public void setStartTime(String startTime) {
 		this.startTime = startTime;
 	}
+	public void setStartTimeToNow() {
+		this.startTime = new Date().toString().substring(11, 16);
+		this.endTime = "??:??";
+	}
+	public void setEndTimeToNow() {
+		this.endTime = new Date().toString().substring(11, 16);
+	}
 	public String getEndTime() {
 		return endTime;
 	}
@@ -44,5 +51,10 @@ public class Volunteer {
 		this.endTime = endTime;
 	}
 	
+	public String toString() {
+		String result = "";
+		result += this.firstName + "," + this.lastName + "," + this.getStartTime() + "," + this.getEndTime();
+		return result;
+	}
 	
 }

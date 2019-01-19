@@ -46,8 +46,12 @@ public class HomeController implements Initializable {
     }
 
     @FXML
-    void loadVolunteer(ActionEvent event) {
-    	
+    void loadVolunteer(ActionEvent event) throws IOException {
+    	FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(Main.class.getResource("../VolunteerSignIn.fxml"));
+		this.anchorPane = (AnchorPane) loader.load(); Scene scene = new Scene(anchorPane, 1280,720); 
+		Main.mainStage.setScene(scene);
+		Main.mainStage.show();
     }
 
     @FXML

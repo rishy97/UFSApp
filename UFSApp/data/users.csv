@@ -1,8 +1,8 @@
-First Name,Last Name,Email Address,Meeting Count
-jordyn,ruiz,jordynashley321@gmail.com,1,Tue Jan 15 15:55:42 CST 2019
-unite,for sight,uniteforsight.at.utsa@gmail.com,0,Tue Jan 15 14:39:11 CST 2019
-tuoyo,eresanara,tuoyoeresanara@gmail.com,0,Tue Jan 15 15:08:55 CST 2019
-daniel,astroga,danielastorga3@gmail.com,0,Tue Jan 15 15:07:28 CST 2019
-randa,ibrahimm,randaibrahimm@gmail.com,0,Tue Jan 15 15:08:24 CST 2019
-rishy,monga,rishabhmonga9797@gmail.com,0,Mon Jan 14 13:23:54 CST 2019
-erick,linares,ericklinares96@gmail.com,0,Tue Jan 15 15:09:38 CST 2019
+First Name,Last Name,Email Address,Meeting Count,Volunteer Event Count,Last Meeting,Last Volunteer Event
+jordyn,ruiz,jordynashley321@gmail.com,0,0,Tue Jan 15 15:55:42 CST 2019,null
+unite,for sight,uniteforsight.at.utsa@gmail.com,0,0,Tue Jan 15 14:39:11 CST 2019,null
+tuoyo,eresanara,tuoyoeresanara@gmail.com,0,0,Tue Jan 15 15:08:55 CST 2019,null
+daniel,astroga,danielastorga3@gmail.com,0,0,Tue Jan 15 15:07:28 CST 2019,null
+randa,ibrahimm,randaibrahimm@gmail.com,0,0,Tue Jan 15 15:08:24 CST 2019,null
+rishy,monga,rishabhmonga9797@gmail.com,0,0,Fri Jan 18 17:13:51 CST 2019,Fri Jan 18 20:00:33 CST 2019
+erick,linares,ericklinares96@gmail.com,0,0,Tue Jan 15 15:09:38 CST 2019,null

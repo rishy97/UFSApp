@@ -216,6 +216,7 @@ public class MeetingSignInController implements Initializable {
 			this.EmailField.setFocusTraversable(false);
 			this.SignInButton.setFocusTraversable(false);
 
+			Main.ufs.toString();
 			//Image image = new Image("file: " + "../../images/ufslog.png");
 			//this.Image.setImage(image);
 	}

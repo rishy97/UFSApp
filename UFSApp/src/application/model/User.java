@@ -89,5 +89,9 @@ public class User {
 	public void setLastVolunteerEvent(String lastVolunteerEvent) {
 		this.lastVolunteerEvent = lastVolunteerEvent;
 	}
+	
+	public void setLastVolunteerEventToToday() {
+		this.lastVolunteerEvent = new Date().toString();
+	}
 
 }

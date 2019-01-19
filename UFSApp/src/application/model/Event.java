@@ -5,6 +5,8 @@
 package application.model;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -98,15 +100,20 @@ public class Event {
 	
 	public void addVolunteer( Volunteer newVolunteer ) {
 		this.volunteers.add(newVolunteer);
-		
-		if ( this.numberOfExpectedVolunteers < this.volunteers.size()  ) {
-			this.numberOfExpectedVolunteers = this.volunteers.size();
-		}
 		return;
 	}
 	
 	public void removeVolunteer( Volunteer oldVolunteer ) {
 		this.volunteers.remove(oldVolunteer);
+	}
+	
+	public Volunteer findVolunteer( String firstName, String lastName ) {
+		for( Volunteer temp: volunteers ) {
+			if( temp.getFirstName().equals(firstName) && temp.getLastName().equals(lastName)) {
+				return temp;
+			}
+		}
+		return null;
 	}
 	
 	public void loadEvent(String filename) throws FileNotFoundException {
@@ -128,6 +135,9 @@ public class Event {
 			String line = scan.nextLine();
 			String [] tokens = line.split(",");
 			
+			if (tokens[0].equals("Volunteer First Name"))
+				continue;
+			
 			Volunteer newVolunteer = new Volunteer(tokens[0], tokens[1]);
 			newVolunteer.setStartTime(tokens[2]);
 			newVolunteer.setEndTime(tokens[3]);
@@ -136,6 +146,36 @@ public class Event {
 		}
 		
 		scan.close();
+	}
+	
+	public void saveEvent( String filename ) throws IOException {
+		File file = new File( filename );
+		FileWriter printer = new FileWriter( file );
+		
+		printer.write(this.getEventName() + "\n" + this.date + "\n" 
+					+ this.getStartTime() + "\n" + this.getEndTime() 
+					+ "\n" + this.numberOfExpectedVolunteers + "\n"
+					+ this.description + "\n" + "Volunteer First Name, Volunteer Last Name, Start Time, End Time\n"
+					+ this.volunteersToString());
+
+		printer.close();
+	}
+	
+	public String volunteersToString() {
+		String result = "";
+		for( Volunteer temp : volunteers ) {
+			result += temp.toString() + "\n";
+		}
+		return result;
+	}
+	
+	public String displayVolunteers() {
+		String result = "";
+		for( Volunteer temp: volunteers ) {
+			result += String.format("%-16s%-16s\t\t\t%-5s - %5s\n",temp.getFirstName(), temp.getLastName(), TimeComparer.returnPMFixed(temp.getStartTime()), TimeComparer.returnPMFixed(temp.getEndTime()) );
+			//result += temp.getFirstName() + " " + temp.getLastName() + "\t\t\t" + temp.getStartTime() + temp.getEndTime() + "\n";
+		}
+		return result;
 	}
 	
 }
