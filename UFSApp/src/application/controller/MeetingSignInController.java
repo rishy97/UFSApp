@@ -209,7 +209,7 @@ public class MeetingSignInController implements Initializable {
 
 			this.FirstNameField.setPromptText("e.g. Jordyn");
 			this.LastNameField.setPromptText("e.g. Ruiz");
-			this.EmailField.setPromptText("(Optional)");
+			this.EmailField.setPromptText("(First Time Only)");
 
 			this.FirstNameField.setFocusTraversable(false);
 			this.LastNameField.setFocusTraversable(false);

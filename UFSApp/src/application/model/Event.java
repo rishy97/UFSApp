@@ -116,13 +116,11 @@ public class Event {
 		}
 		return null;
 	}
-	
+	/*
 	public void signOutAll() {
-		for( Volunteer temp: volunteers ) {
-			if (temp.getEndTime().equals("??:??"))
-				temp.setEndTimeToNow();
-		}
+		
 	}
+	*/
 	
 	public void loadEvent(String filename) throws FileNotFoundException {
 		File file = new File( filename );

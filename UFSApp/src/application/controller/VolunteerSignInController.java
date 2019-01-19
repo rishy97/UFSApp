@@ -142,7 +142,7 @@ public class VolunteerSignInController implements Initializable {
 
 	@FXML
 	public void onEnter(ActionEvent event) throws IOException, InterruptedException {
-
+		
 		if (!FirstNameField.getText().isEmpty()) {
 			if (FirstNameField.getText().toLowerCase().equals("home")) {
 				FXMLLoader loader = new FXMLLoader();
@@ -187,6 +187,11 @@ public class VolunteerSignInController implements Initializable {
 
 		if (!SignInRadio.isSelected() && !SignOutRadio.isSelected()) {
 			updateErrorField("Please Sign In or Sign Out");
+			return;
+		}
+		
+		if (VolunteersTextField.getText().isEmpty()) {
+			updateErrorField("Need to Select an Event");
 			return;
 		}
 
@@ -237,8 +242,11 @@ public class VolunteerSignInController implements Initializable {
 					currentVolunteer.setEndTimeToNow();
 					updateVolunteersField();
 					saveCurrentEvent();
+					temp.setTotalVolunteerHours(TimeComparer.addTotalHours(temp.getTotalVolunteerHours(), TimeComparer.countHours(currentVolunteer.getStartTime() , currentVolunteer.getEndTime() )));
 				}
-				//Main.ufs.saveUsers("data/users.csv");
+				
+				
+				Main.ufs.saveUsers("data/users.csv");
 
 				FirstNameField.clear();
 				LastNameField.clear();
@@ -266,14 +274,13 @@ public class VolunteerSignInController implements Initializable {
 		Main.ufs.addUser(FirstNameField.getText(), LastNameField.getText(), EmailField.getText());
 
 		User temp = Main.ufs.findUser(FirstNameField.getText(), LastNameField.getText());
-		temp.setVolunteerEvents(1);
-		temp.setLastVolunteerEventToToday();
-		Main.ufs.saveUsers("data/users.csv");
-
 		Volunteer newVolunteer = new Volunteer(temp.getFirstName(), temp.getLastName());
 		newVolunteer.setStartTimeToNow();
 		currentEvent.addVolunteer(newVolunteer);
 		updateVolunteersField();
+		temp.setVolunteerEvents(1);
+		temp.setLastVolunteerEventToToday();
+		Main.ufs.saveUsers("data/users.csv");
 		
 		updateErrorField("Success. Welcome to UFS!");
 		saveCurrentEvent();
@@ -315,7 +322,17 @@ public class VolunteerSignInController implements Initializable {
 	public void onSignAllOut(ActionEvent event) throws IOException, InterruptedException {
 		if ( currentEvent == null )
 			updateErrorField("No Event Selected");
-		currentEvent.signOutAll();
+		//currentEvent.signOutAll();
+		for( Volunteer currentVolunteer: currentEvent.getVolunteers() ) {
+			if (currentVolunteer.getEndTime().equals("??:??")) {
+				currentVolunteer.setEndTimeToNow();
+				User temp = Main.ufs.findUser(currentVolunteer.getFirstName(), currentVolunteer.getLastName());
+				temp.setTotalVolunteerHours(TimeComparer.addTotalHours(temp.getTotalVolunteerHours(), 
+						TimeComparer.countHours(currentVolunteer.getStartTime() , currentVolunteer.getEndTime() )));
+			}
+		}
+		Main.ufs.saveUsers("data/users.csv");
+		
 		updateVolunteersField();
 		saveCurrentEvent();
 	}
@@ -379,7 +396,7 @@ public class VolunteerSignInController implements Initializable {
 
 		this.FirstNameField.setPromptText("e.g. Jordyn");
 		this.LastNameField.setPromptText("e.g. Ruiz");
-		this.EmailField.setPromptText("(Optional)");
+		this.EmailField.setPromptText("(First Time Only)");
 
 		this.FirstNameField.setFocusTraversable(false);
 		this.LastNameField.setFocusTraversable(false);

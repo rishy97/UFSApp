@@ -12,6 +12,7 @@ public class User {
 	private String emailAddress;
 	private String lastMeeting;
 	private String lastVolunteerEvent;
+	private String totalVolunteerHours;
 	private Integer meetings;
 	private Integer volunteerEvents;
 
@@ -92,6 +93,14 @@ public class User {
 	
 	public void setLastVolunteerEventToToday() {
 		this.lastVolunteerEvent = new Date().toString();
+	}
+
+	public String getTotalVolunteerHours() {
+		return totalVolunteerHours;
+	}
+
+	public void setTotalVolunteerHours(String totalVolunteerHours) {
+		this.totalVolunteerHours = totalVolunteerHours;
 	}
 
 }

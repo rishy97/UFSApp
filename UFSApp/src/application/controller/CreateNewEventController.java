@@ -12,6 +12,7 @@ import java.util.ResourceBundle;
 import application.Main;
 import application.model.Event;
 import application.model.Organization;
+import application.model.TimeComparer;
 import application.model.User;
 import application.model.Volunteer;
 import javafx.fxml.FXML;
@@ -87,7 +88,7 @@ public class CreateNewEventController implements Initializable {
     	newEvent.setNumberOfExpectedVolunteers(Integer.parseInt(numberField.getText()));
     	newEvent.setDescription(descriptionField.getText());
     	newEvent.setStartTime(startTimeField.getText());
-    	newEvent.setEndTime(endTimeField.getText());
+    	newEvent.setEndTime(TimeComparer.returnPMunfixed(startTimeField.getText(), endTimeField.getText()));
     	newEvent.setDate(dateSelector.getValue().toString());
     	newEvent.saveEvent("data/events/" + newEvent.getEventName() + ".csv");
     	
