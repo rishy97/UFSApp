@@ -34,8 +34,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.input.Clipboard;
-import javafx.scene.input.ClipboardContent;
 
 public class VolunteerSignInController implements Initializable {
 	File[] listOfFiles;
@@ -43,6 +41,7 @@ public class VolunteerSignInController implements Initializable {
 	int fileIndex;
 	int oldFileIndex;
 	Event currentEvent;
+	ObservableList<String> options;
 
 	@FXML
 	private Button CreateEventButton;
@@ -102,8 +101,17 @@ public class VolunteerSignInController implements Initializable {
 	private AnchorPane anchorPane;
 	
 	public void updateVolunteersField() throws IOException {
-		VolunteersTextField.setText("List of Volunteers:" + "\t\t\t\t " + TimeComparer.returnPMFixed(currentEvent.getStartTime()) + " - " + TimeComparer.returnPMFixed(currentEvent.getEndTime()) + "\n---------------------------------------------------------------\n");
+		
+		if ( currentEvent == null ) {
+			VolunteersTextField.setText("");
+			return;
+		}
+		
+		VolunteersTextField.setText("List of Volunteers:" + "\t\t\t\t " + TimeComparer.returnPMFixed(currentEvent.getStartTime()) + " - " + TimeComparer.returnPMFixed(currentEvent.getEndTime()) + "\n----------------------------------------------------------------\n");
 		VolunteersTextField.appendText(currentEvent.displayVolunteers());
+		for ( int i = 0; i < currentEvent.getNumberOfExpectedVolunteers() - currentEvent.getVolunteers().size(); i++ ) {
+			VolunteersTextField.appendText(" ----\t\t     ----\t\t\t\t\t  ----     ----\n");
+		}
 	}
 
 	public void updateErrorField(String entry) throws InterruptedException {
@@ -213,6 +221,8 @@ public class VolunteerSignInController implements Initializable {
 				this.LastNameField.deselect();
 				this.EmailField.selectEnd();
 				this.EmailField.deselect();
+				this.SignInRadio.setSelected(false);
+				this.SignOutRadio.setSelected(false);
 
 				this.EnterButton.requestFocus();
 
@@ -238,6 +248,9 @@ public class VolunteerSignInController implements Initializable {
 				this.LastNameField.deselect();
 				this.EmailField.selectEnd();
 				this.EmailField.deselect();
+				
+				this.SignInRadio.setSelected(false);
+				this.SignOutRadio.setSelected(false);
 
 				this.EnterButton.requestFocus();
 
@@ -273,6 +286,8 @@ public class VolunteerSignInController implements Initializable {
 		this.LastNameField.deselect();
 		this.EmailField.selectEnd();
 		this.EmailField.deselect();
+		this.SignInRadio.setSelected(false);
+		this.SignOutRadio.setSelected(false);
 
 		this.EnterButton.requestFocus();
 
@@ -306,19 +321,31 @@ public class VolunteerSignInController implements Initializable {
 	}
 
 	@FXML
-	public void onCreate(ActionEvent event) {
-		
+	public void onCreate(ActionEvent event) throws IOException {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(Main.class.getResource("../CreateNewEvent.fxml"));
+		this.anchorPane = (AnchorPane) loader.load(); Scene scene = new Scene(anchorPane, 1280,720); Main.mainStage.setScene(scene);
+		Main.mainStage.show();
 	}
 
 	@FXML
-	public void onDelete(ActionEvent event) {
-		
+	public void onDelete(ActionEvent event) throws IOException {
+		if (!SelectEvent.getValue().isEmpty()) {
+			listOfFiles[fileIndex].delete();
+			listOfFiles[fileIndex] = null;
+			fileNames[fileIndex] = null;
+			SelectEvent.setValue("");
+			currentEvent = null;
+			fileIndex = -1;
+			updateVolunteersField();
+			updateOptions();
+		}
 	}
 	
 	@FXML
 	public void onCombo(ActionEvent event) throws IOException {
 		for( int i = 0; i < fileNames.length; i++ ) {
-			if ( fileNames[i].equals(SelectEvent.getValue()) ) {
+			if ( fileNames[i] != null && fileNames[i].equals(SelectEvent.getValue()) ) {
 				currentEvent = new Event();
 				currentEvent.loadEvent(listOfFiles[i].getPath());
 				updateVolunteersField();
@@ -328,6 +355,17 @@ public class VolunteerSignInController implements Initializable {
 		}
 	}
 	
+	public void updateOptions() {
+		options.clear();
+		for (int i = 0; i < listOfFiles.length; i++) {
+			if ( listOfFiles[i] != null ) {
+				String name = listOfFiles[i].getName();
+				fileNames[i] = name.substring(0, name.length() - 4);
+				options.add(fileNames[i]);
+			}
+		}
+		SelectEvent.setItems(options);
+	}
 
 
 	/**
@@ -361,7 +399,7 @@ public class VolunteerSignInController implements Initializable {
 		listOfFiles = folder.listFiles();
 		fileNames = new String[listOfFiles.length];
 
-		ObservableList<String> options = FXCollections.observableArrayList();
+		options = FXCollections.observableArrayList();
 
 		for (int i = 0; i < listOfFiles.length; i++) {
 			String name = listOfFiles[i].getName();

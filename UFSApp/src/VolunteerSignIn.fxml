@@ -73,7 +73,7 @@
       </Label>
       <TextArea fx:id="VolunteersTextField" layoutX="646.0" layoutY="194.0" prefHeight="420.0" prefWidth="576.0">
          <font>
-            <Font name="Calisto MT Bold" size="24.0" />
+            <Font name="Calisto MT Bold" size="22.0" />
          </font></TextArea>
       <Button fx:id="SignAllOutButton" alignment="CENTER" layoutX="816.0" layoutY="643.0" mnemonicParsing="false" onAction="#onSignAllOut" prefHeight="51.0" prefWidth="234.0" text="Sign All Out" textAlignment="CENTER">
          <font>

@@ -136,7 +136,7 @@ public class Event {
 		this.date = scan.nextLine();
 		this.startTime = scan.nextLine();
 		this.endTime = scan.nextLine();
-		this.numberOfExpectedVolunteers = Integer.getInteger(scan.nextLine());
+		this.numberOfExpectedVolunteers = Integer.parseInt(scan.nextLine());
 		this.description = scan.nextLine();
 		
 		while( scan.hasNextLine()) {
@@ -183,6 +183,7 @@ public class Event {
 			result += String.format("%-16s%-16s \t\t\t%-5s - %5s\n",temp.getFirstName().toLowerCase(), temp.getLastName().toLowerCase(), TimeComparer.returnPMFixed(temp.getStartTime()), TimeComparer.returnPMFixed(temp.getEndTime()) );
 			//result += temp.getFirstName() + " " + temp.getLastName() + "\t\t\t" + temp.getStartTime() + temp.getEndTime() + "\n";
 		}
+		
 		return result;
 	}
 	
