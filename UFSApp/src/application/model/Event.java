@@ -22,6 +22,7 @@ public class Event {
 	
 	public Event( ) {
 		this.volunteers = new ArrayList<Volunteer>();
+		numberOfExpectedVolunteers = 0;
 	}
 	
 	public Event( String name, int numberOfExpectedVolunteers, String date, String startTime, String endTime, String description) {
@@ -116,6 +117,13 @@ public class Event {
 		return null;
 	}
 	
+	public void signOutAll() {
+		for( Volunteer temp: volunteers ) {
+			if (temp.getEndTime().equals("??:??"))
+				temp.setEndTimeToNow();
+		}
+	}
+	
 	public void loadEvent(String filename) throws FileNotFoundException {
 		File file = new File( filename );
 		Scanner scan = new Scanner( file );
@@ -172,7 +180,7 @@ public class Event {
 	public String displayVolunteers() {
 		String result = "";
 		for( Volunteer temp: volunteers ) {
-			result += String.format("%-16s%-16s\t\t\t%-5s - %5s\n",temp.getFirstName(), temp.getLastName(), TimeComparer.returnPMFixed(temp.getStartTime()), TimeComparer.returnPMFixed(temp.getEndTime()) );
+			result += String.format("%-16s%-16s \t\t\t%-5s - %5s\n",temp.getFirstName().toLowerCase(), temp.getLastName().toLowerCase(), TimeComparer.returnPMFixed(temp.getStartTime()), TimeComparer.returnPMFixed(temp.getEndTime()) );
 			//result += temp.getFirstName() + " " + temp.getLastName() + "\t\t\t" + temp.getStartTime() + temp.getEndTime() + "\n";
 		}
 		return result;

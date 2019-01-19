@@ -75,7 +75,7 @@
          <font>
             <Font name="Calisto MT Bold" size="24.0" />
          </font></TextArea>
-      <Button fx:id="SignAllOutButton" alignment="CENTER" layoutX="816.0" layoutY="643.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="234.0" text="Sign All Out" textAlignment="CENTER">
+      <Button fx:id="SignAllOutButton" alignment="CENTER" layoutX="816.0" layoutY="643.0" mnemonicParsing="false" onAction="#onSignAllOut" prefHeight="51.0" prefWidth="234.0" text="Sign All Out" textAlignment="CENTER">
          <font>
             <Font name="Calisto MT Bold" size="22.0" />
          </font>

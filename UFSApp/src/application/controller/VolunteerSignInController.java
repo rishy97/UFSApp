@@ -98,12 +98,12 @@ public class VolunteerSignInController implements Initializable {
 	@FXML
 	private Button SignAllOutButton;
 
+	@FXML
 	private AnchorPane anchorPane;
 	
 	public void updateVolunteersField() throws IOException {
 		VolunteersTextField.setText("List of Volunteers:" + "\t\t\t\t " + TimeComparer.returnPMFixed(currentEvent.getStartTime()) + " - " + TimeComparer.returnPMFixed(currentEvent.getEndTime()) + "\n---------------------------------------------------------------\n");
 		VolunteersTextField.appendText(currentEvent.displayVolunteers());
-		currentEvent.saveEvent(listOfFiles[oldFileIndex].getPath());
 	}
 
 	public void updateErrorField(String entry) throws InterruptedException {
@@ -187,12 +187,17 @@ public class VolunteerSignInController implements Initializable {
 			if (SignInRadio.isSelected()) {
 				User temp = Main.ufs.findUser(FirstNameField.getText(), LastNameField.getText());
 				
-				for( Volunteer currentVolunteer : currentEvent.getVolunteers()) {
-					if( currentVolunteer.getFirstName().equals(FirstNameField.getText()) &&  currentVolunteer.getLastName().equals(LastNameField.getText()) ) {
-						currentVolunteer.setStartTimeToNow();
-						updateVolunteersField();
-						break;
-					}
+				if( currentEvent.findVolunteer(temp.getFirstName(), temp.getLastName()) != null) {
+					Volunteer currentVolunteer = currentEvent.findVolunteer(temp.getFirstName(), temp.getLastName());
+					currentVolunteer.setStartTimeToNow();
+					updateVolunteersField();
+					saveCurrentEvent();
+				} else {
+					Volunteer currentVolunteer = new Volunteer(temp.getFirstName(), temp.getLastName());
+					currentEvent.addVolunteer(currentVolunteer);
+					currentVolunteer.setStartTimeToNow();
+					updateVolunteersField();
+					saveCurrentEvent();
 				}
 
 				temp.setVolunteerEvents(temp.getVolunteerEvents() + 1);
@@ -217,12 +222,11 @@ public class VolunteerSignInController implements Initializable {
 
 				updateErrorField("Goodbye!");
 				
-				for( Volunteer currentVolunteer : currentEvent.getVolunteers()) {
-					if( currentVolunteer.getFirstName().equals(temp.getFirstName()) && currentVolunteer.getLastName().equals(temp.getLastName()) ) {
-						currentVolunteer.setEndTimeToNow();
-						updateVolunteersField();
-						break;
-					}
+				if( currentEvent.findVolunteer(temp.getFirstName(), temp.getLastName()) != null) {
+					Volunteer currentVolunteer = currentEvent.findVolunteer(temp.getFirstName(), temp.getLastName());
+					currentVolunteer.setEndTimeToNow();
+					updateVolunteersField();
+					saveCurrentEvent();
 				}
 				//Main.ufs.saveUsers("data/users.csv");
 
@@ -259,6 +263,7 @@ public class VolunteerSignInController implements Initializable {
 		updateVolunteersField();
 		
 		updateErrorField("Success. Welcome to UFS!");
+		saveCurrentEvent();
 
 		FirstNameField.clear();
 		LastNameField.clear();
@@ -286,20 +291,28 @@ public class VolunteerSignInController implements Initializable {
 		 * content.putString(temp.getEmailAddress()); clipboard.setContent(content);
 		 */
 	}
+	
+	public void saveCurrentEvent() throws IOException {
+		currentEvent.saveEvent(listOfFiles[fileIndex].getPath());
+	}
 
 	@FXML
-	public void onSignAllOut(ActionEvent event) {
-
+	public void onSignAllOut(ActionEvent event) throws IOException, InterruptedException {
+		if ( currentEvent == null )
+			updateErrorField("No Event Selected");
+		currentEvent.signOutAll();
+		updateVolunteersField();
+		saveCurrentEvent();
 	}
 
 	@FXML
 	public void onCreate(ActionEvent event) {
-
+		
 	}
 
 	@FXML
 	public void onDelete(ActionEvent event) {
-
+		
 	}
 	
 	@FXML
@@ -309,9 +322,6 @@ public class VolunteerSignInController implements Initializable {
 				currentEvent = new Event();
 				currentEvent.loadEvent(listOfFiles[i].getPath());
 				updateVolunteersField();
-				if (fileIndex != -1 ) {
-					oldFileIndex = fileIndex;
-				}
 				fileIndex = i;
 				return;
 			}
@@ -341,8 +351,7 @@ public class VolunteerSignInController implements Initializable {
 		VolunteersTextField.setEditable(false);
 
 		currentEvent = new Event();
-		fileIndex = -1;
-		oldFileIndex = -1;
+		fileIndex = 0;
 		ToggleGroup group = new ToggleGroup();
 
 		SignInRadio.setToggleGroup(group);
