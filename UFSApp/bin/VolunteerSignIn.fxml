@@ -26,16 +26,21 @@
          <image>
             <Image url="@../images/VolunteerSignIn/GUI.png" />
          </image></ImageView>
-      <Label fx:id="EmailLabel" alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="-165.0" layoutY="466.0" prefHeight="36.0" prefWidth="417.0" text="Email:     " textAlignment="RIGHT" textFill="#99cc99">
-         <font>
-            <Font name="Calisto MT Bold" size="27.0" />
-         </font>
-      </Label>
       <ImageView fitHeight="78.0" fitWidth="132.0" layoutX="1158.0" layoutY="642.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/etc/utsalogo.png" />
          </image>
       </ImageView>
+      <Label fx:id="EmailLabel" alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="-165.0" layoutY="466.0" prefHeight="36.0" prefWidth="417.0" text="Email:     " textAlignment="RIGHT" textFill="#99cc99">
+         <font>
+            <Font name="Calisto MT Bold" size="27.0" />
+         </font>
+      </Label>
+      <Button fx:id="EnterButton" alignment="CENTER" layoutX="237.0" layoutY="608.0" mnemonicParsing="false" onAction="#onEnter" prefHeight="43.0" prefWidth="157.0" text="Enter" textAlignment="CENTER">
+         <font>
+            <Font name="Calisto MT Bold" size="22.0" />
+         </font>
+      </Button>
       <TextField fx:id="FirstNameField" layoutX="264.0" layoutY="339.0" prefHeight="43.0" prefWidth="247.0">
          <font>
             <Font name="Calisto MT Bold" size="18.0" />
@@ -51,11 +56,6 @@
             <Font name="Calisto MT Bold" size="18.0" />
          </font>
       </TextField>
-      <Button fx:id="EnterButton" alignment="CENTER" layoutX="237.0" layoutY="608.0" mnemonicParsing="false" onAction="#onEnter" prefHeight="43.0" prefWidth="157.0" text="Enter" textAlignment="CENTER">
-         <font>
-            <Font name="Calisto MT Bold" size="22.0" />
-         </font>
-      </Button>
       <Label fx:id="UserNameLabel" alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="-126.0" layoutY="342.0" prefHeight="36.0" prefWidth="372.0" text="First Name:" textAlignment="RIGHT" textFill="#99cc99">
          <font>
             <Font name="Calisto MT Bold" size="27.0" />
@@ -71,7 +71,7 @@
             <Font name="Calisto MT Bold" size="48.0" />
          </font>
       </Label>
-      <TextArea fx:id="VolunteersTextField" layoutX="646.0" layoutY="194.0" prefHeight="420.0" prefWidth="576.0">
+      <TextArea fx:id="VolunteersTextField" editable="false" layoutX="646.0" layoutY="194.0" prefHeight="420.0" prefWidth="576.0">
          <font>
             <Font name="Calisto MT Bold" size="22.0" />
          </font></TextArea>

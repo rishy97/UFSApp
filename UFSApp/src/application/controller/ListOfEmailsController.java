@@ -65,8 +65,6 @@ public class ListOfEmailsController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		EmailsArea.setText(Main.ufs.getEmailAddreses());
-		for (int i = 0; i < 3; i++ )
-			EmailsArea.appendText(".\n");
 	}
 
 }

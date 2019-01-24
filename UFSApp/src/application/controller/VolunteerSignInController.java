@@ -279,7 +279,10 @@ public class VolunteerSignInController implements Initializable {
 		currentEvent.addVolunteer(newVolunteer);
 		updateVolunteersField();
 		temp.setVolunteerEvents(1);
+		temp.setMeetings(0);
 		temp.setLastVolunteerEventToToday();
+		temp.setTotalVolunteerHours("00:00");
+		temp.setLastMeeting("-");
 		Main.ufs.saveUsers("data/users.csv");
 		
 		updateErrorField("Success. Welcome to UFS!");
@@ -389,7 +392,7 @@ public class VolunteerSignInController implements Initializable {
 	 * initialize() method - starts the controller
 	 */
 	public void initialize(URL location, ResourceBundle resources) {
-		this.TitleLabel.setText("Meeting Sign In");
+		this.TitleLabel.setText("Volunteer Sign In");
 		this.UserNameLabel.setText("First Name:");
 		this.PasswordLabel.setText("Last Name:");
 		this.EmailLabel.setText("Email:     ");
@@ -397,13 +400,15 @@ public class VolunteerSignInController implements Initializable {
 		this.FirstNameField.setPromptText("e.g. Jordyn");
 		this.LastNameField.setPromptText("e.g. Ruiz");
 		this.EmailField.setPromptText("(First Time Only)");
-
+		
+		/*
 		this.FirstNameField.setFocusTraversable(false);
 		this.LastNameField.setFocusTraversable(false);
 		this.EmailField.setFocusTraversable(false);
 		this.EnterButton.setFocusTraversable(false);
+		*/
 		
-		VolunteersTextField.setEditable(false);
+		//VolunteersTextField.setEditable(false);
 
 		currentEvent = new Event();
 		fileIndex = 0;

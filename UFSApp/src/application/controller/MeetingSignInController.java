@@ -163,11 +163,12 @@ public class MeetingSignInController implements Initializable {
 
 		User temp = Main.ufs.findUser(FirstNameField.getText(), LastNameField.getText());
 		temp.setMeetings(1);
+		temp.setVolunteerEvents(0);
+		temp.setTotalVolunteerHours("00:00");
 		temp.setLatestMeetingToToday();
+		temp.setLastVolunteerEvent("-");
 		Main.ufs.saveUsers("data/users.csv");
 		
-		Volunteer newPerson = new Volunteer( temp.getFirstName(), temp.getLastName() );
-
 		updateErrorField("Success. Welcome to UFS!");
 		
 		FirstNameField.clear();
@@ -210,13 +211,7 @@ public class MeetingSignInController implements Initializable {
 			this.FirstNameField.setPromptText("e.g. Jordyn");
 			this.LastNameField.setPromptText("e.g. Ruiz");
 			this.EmailField.setPromptText("(First Time Only)");
-
-			this.FirstNameField.setFocusTraversable(false);
-			this.LastNameField.setFocusTraversable(false);
-			this.EmailField.setFocusTraversable(false);
-			this.SignInButton.setFocusTraversable(false);
-
-			Main.ufs.toString();
+			
 			//Image image = new Image("file: " + "../../images/ufslog.png");
 			//this.Image.setImage(image);
 	}

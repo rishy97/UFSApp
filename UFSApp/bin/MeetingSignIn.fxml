@@ -22,6 +22,10 @@
             <Image url="@../images/MeetingSignIn/backdrop.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="Image" fitHeight="214.0" fitWidth="400.0" layoutX="771.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/MeetingSignIn/ufslog.png" />
+         </image></ImageView>
       <Label fx:id="TitleLabel" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="796.0" layoutY="264.0" prefHeight="58.0" prefWidth="357.0" text="Meeting Sign In" textAlignment="CENTER" textFill="#f2ffa6">
          <font>
             <Font name="Calisto MT Bold" size="48.0" />
@@ -32,6 +36,11 @@
             <Font name="Calisto MT Bold" size="27.0" />
          </font>
       </Label>
+      <Button fx:id="SignInButton" alignment="CENTER" layoutX="900.0" layoutY="607.0" mnemonicParsing="false" onAction="#loadNextScreen" prefHeight="43.0" prefWidth="157.0" text="Sign In" textAlignment="CENTER">
+         <font>
+            <Font name="Calisto MT Bold" size="22.0" />
+         </font>
+      </Button>
       <TextField fx:id="FirstNameField" layoutX="928.0" layoutY="382.0" prefHeight="43.0" prefWidth="247.0">
          <font>
             <Font name="Calisto MT Bold" size="18.0" />
@@ -42,10 +51,6 @@
             <Font name="Calisto MT Bold" size="26.0" />
          </font>
       </Label>
-      <ImageView fx:id="Image" fitHeight="214.0" fitWidth="400.0" layoutX="771.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/MeetingSignIn/ufslog.png" />
-         </image></ImageView>
       <TextField fx:id="LastNameField" layoutX="928.0" layoutY="442.0" prefHeight="43.0" prefWidth="247.0">
          <font>
             <Font name="Calisto MT Bold" size="18.0" />
@@ -56,11 +61,6 @@
             <Font name="Calisto MT Bold" size="18.0" />
          </font>
       </TextField>
-      <Button fx:id="SignInButton" alignment="CENTER" layoutX="900.0" layoutY="607.0" mnemonicParsing="false" onAction="#loadNextScreen" prefHeight="43.0" prefWidth="157.0" text="Sign In" textAlignment="CENTER">
-         <font>
-            <Font name="Calisto MT Bold" size="22.0" />
-         </font>
-      </Button>
       <Label fx:id="PasswordLabel" alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="529.0" layoutY="444.0" prefHeight="36.0" prefWidth="372.0" text="Last Name:" textAlignment="RIGHT" textFill="#60b5ff">
          <font>
             <Font name="Calisto MT Bold" size="27.0" />

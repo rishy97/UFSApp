@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.CreateNewEventController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="720.0" stroke="BLACK" strokeType="INSIDE" width="1280.0" />
+      <ImageView fx:id="Background" fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/CreateNewEvent/background.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/CreateNewEvent/backdrop.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/CreateNewEvent/GUI.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="78.0" fitWidth="132.0" layoutX="1158.0" layoutY="642.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/etc/utsalogo.png" />
+         </image>
+      </ImageView>
+      <Label alignment="TOP_LEFT" contentDisplay="RIGHT" layoutX="276.0" layoutY="534.0" prefHeight="37.0" prefWidth="246.0" text="Description:" textAlignment="RIGHT" textFill="#99cc99">
+         <font>
+            <Font name="Calisto MT Bold" size="27.0" />
+         </font>
+      </Label>
+      <TextField fx:id="eventNameField" layoutX="475.0" layoutY="234.0" prefHeight="43.0" prefWidth="520.0" promptText="e.g. Lion's Sight Mobile Eye Clinic">
+         <font>
+            <Font name="Calisto MT Bold" size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="startTimeField" alignment="CENTER" layoutX="451.0" layoutY="457.0" prefHeight="43.0" prefWidth="104.0" promptText="9:00">
+         <font>
+            <Font name="Calisto MT Bold" size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="descriptionField" layoutX="453.0" layoutY="531.0" prefHeight="43.0" prefWidth="545.0" promptText="e.g. Lion's are cats but with Cool Hair">
+         <font>
+            <Font name="Calisto MT Bold" size="18.0" />
+         </font>
+      </TextField>
+      <Button fx:id="goBackButton" alignment="CENTER" layoutX="465.0" layoutY="629.0" mnemonicParsing="false" onAction="#goBack" prefHeight="43.0" prefWidth="157.0" text="Go Back" textAlignment="CENTER">
+         <font>
+            <Font name="Calisto MT Bold" size="22.0" />
+         </font>
+      </Button>
+      <Label alignment="TOP_LEFT" contentDisplay="RIGHT" layoutX="276.0" layoutY="237.0" prefHeight="37.0" prefWidth="170.0" text="Event Name:" textAlignment="RIGHT" textFill="#99cc99">
+         <font>
+            <Font name="Calisto MT Bold" size="27.0" />
+         </font>
+      </Label>
+      <Label alignment="TOP_LEFT" contentDisplay="RIGHT" layoutX="276.0" layoutY="314.0" prefHeight="37.0" prefWidth="281.0" text="Number of Volunteers:" textAlignment="RIGHT" textFill="#99cc99">
+         <font>
+            <Font name="Calisto MT Bold" size="27.0" />
+         </font>
+      </Label>
+      <Label fx:id="TitleLabel" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="427.0" layoutY="86.0" prefHeight="66.0" prefWidth="426.0" text="Create a New Event" textAlignment="CENTER" textFill="#99cc99">
+         <font>
+            <Font name="Calisto MT Bold" size="48.0" />
+         </font>
+      </Label>
+      <Label fx:id="ErrorLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="74.0" layoutY="664.0" prefHeight="35.0" prefWidth="469.0" textFill="#99cc99">
+         <font>
+            <Font name="Calisto MT Bold" size="27.0" />
+         </font>
+      </Label>
+      <TextField fx:id="numberField" alignment="CENTER" layoutX="581.0" layoutY="311.0" prefHeight="43.0" prefWidth="59.0" promptText="00">
+         <font>
+            <Font name="Calisto MT Bold" size="18.0" />
+         </font>
+      </TextField>
+      <DatePicker fx:id="dateSelector" layoutX="491.0" layoutY="377.0" prefHeight="43.0" prefWidth="263.0" promptText=" 00/00/0000" />
+      <TextField fx:id="endTimeField" alignment="CENTER" layoutX="754.0" layoutY="457.0" prefHeight="43.0" prefWidth="104.0" promptText="5:00">
+         <font>
+            <Font name="Calisto MT Bold" size="18.0" />
+         </font>
+      </TextField>
+      <Label alignment="TOP_LEFT" contentDisplay="RIGHT" layoutX="276.0" layoutY="457.0" prefHeight="37.0" prefWidth="137.0" text="Start Time:" textAlignment="RIGHT" textFill="#99cc99">
+         <font>
+            <Font name="Calisto MT Bold" size="27.0" />
+         </font>
+      </Label>
+      <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="581.0" layoutY="457.0" prefHeight="37.0" prefWidth="144.0" text="End Time:" textAlignment="RIGHT" textFill="#99cc99">
+         <font>
+            <Font name="Calisto MT Bold" size="27.0" />
+         </font>
+      </Label>
+      <Label alignment="TOP_LEFT" contentDisplay="RIGHT" layoutX="276.0" layoutY="384.0" prefHeight="37.0" prefWidth="185.0" text="Date of Event:" textAlignment="RIGHT" textFill="#99cc99">
+         <font>
+            <Font name="Calisto MT Bold" size="27.0" />
+         </font>
+      </Label>
+      <Button fx:id="createButton" alignment="CENTER" layoutX="665.0" layoutY="629.0" mnemonicParsing="false" onAction="#create" prefHeight="43.0" prefWidth="157.0" text="Create" textAlignment="CENTER">
+         <font>
+            <Font name="Calisto MT Bold" size="22.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

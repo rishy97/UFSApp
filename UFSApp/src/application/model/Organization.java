@@ -76,7 +76,6 @@ public class Organization {
 			newUser.setLastMeeting(tokens[6]);
 			newUser.setLastVolunteerEvent(tokens[7]);
 			String username = tokens[0] + "+" + tokens[1];
-//			System.out.println(username + "\n" + newUser.toString());
 			
 			users.put(username, newUser);
 		}
@@ -94,7 +93,7 @@ public class Organization {
 	}
 	
 	public String toString() {
-		String result = "First Name,Last Name,Email Address,Meeting Count,Volunteer Event Count,Last Meeting,Last Volunteer Event\n";
+		String result = "First Name,Last Name,Email Address,Meeting Count,Volunteer Event Count,Total Volunteer Hours,Last Meeting,Last Volunteer Event\n";
 		
 		for( User temp : users.values() ) {
 			result += temp.getFirstName().toLowerCase() + "," + temp.getLastName().toLowerCase() + "," + temp.getEmailAddress().toLowerCase()  + "," + temp.getMeetings() + "," + temp.getVolunteerEvents() + "," + temp.getTotalVolunteerHours() + "," + temp.getLastMeeting() + "," + temp.getLastVolunteerEvent() + "\n";
