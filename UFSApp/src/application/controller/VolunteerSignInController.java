@@ -274,6 +274,7 @@ public class VolunteerSignInController implements Initializable {
 		Main.ufs.addUser(FirstNameField.getText(), LastNameField.getText(), EmailField.getText());
 
 		User temp = Main.ufs.findUser(FirstNameField.getText(), LastNameField.getText());
+		Main.ufs.addNewEmail(temp.getEmailAddress());
 		Volunteer newVolunteer = new Volunteer(temp.getFirstName(), temp.getLastName());
 		newVolunteer.setStartTimeToNow();
 		currentEvent.addVolunteer(newVolunteer);

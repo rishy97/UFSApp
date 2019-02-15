@@ -160,8 +160,9 @@ public class MeetingSignInController implements Initializable {
 		}
 		
 		Main.ufs.addUser(FirstNameField.getText(), LastNameField.getText(), EmailField.getText());
-
+		
 		User temp = Main.ufs.findUser(FirstNameField.getText(), LastNameField.getText());
+		Main.ufs.addNewEmail(temp.getEmailAddress());
 		temp.setMeetings(1);
 		temp.setVolunteerEvents(0);
 		temp.setTotalVolunteerHours("00:00");

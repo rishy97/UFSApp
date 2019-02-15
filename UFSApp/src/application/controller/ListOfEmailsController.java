@@ -45,12 +45,14 @@ public class ListOfEmailsController implements Initializable {
 	private AnchorPane anchorPane;
 	
 	@FXML
-	void copyAllEmails(ActionEvent event) {
+	void copyAllEmails(ActionEvent event) throws IOException {
 		Clipboard clipboard = Clipboard.getSystemClipboard();
 		ClipboardContent content = new ClipboardContent();
 		
 		content.putString(Main.ufs.getEmailAddreses());
 		clipboard.setContent(content);
+		
+		Main.ufs.saveNewEmails("data/newEmails.csv");
 	}
 
 	@FXML

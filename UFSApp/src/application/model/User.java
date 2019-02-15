@@ -102,5 +102,4 @@ public class User {
 	public void setTotalVolunteerHours(String totalVolunteerHours) {
 		this.totalVolunteerHours = totalVolunteerHours;
 	}
-
 }

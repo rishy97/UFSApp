@@ -4,16 +4,19 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
 public class Organization {
 	private HashMap<String, User> users;
 	private String name;
+	private ArrayList<String> newEmails;
 	
 	public Organization(String name) {
 		this.name = name;
 		users = new HashMap<String, User>();
+		newEmails = new ArrayList<String>();
 	}
 
 	public String getName() {
@@ -22,6 +25,14 @@ public class Organization {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public ArrayList<String> getNewEmails() {
+		return newEmails;
+	}
+
+	public void setNewEmails(ArrayList<String> newEmails) {
+		this.newEmails = newEmails;
 	}
 	
 	public void addUser(String firstName, String lastName) {
@@ -55,6 +66,10 @@ public class Organization {
 			result += temp.getEmailAddress() + "\n";
 		}
 		return result;
+	}
+	
+	public void addNewEmail( String newEmail ) {
+		this.newEmails.add(newEmail);
 	}
 	
 	public void loadUsers( String filename ) throws FileNotFoundException {
@@ -92,6 +107,25 @@ public class Organization {
 		printer.close();
 	}
 	
+	public void saveNewEmails( String filename ) throws IOException {
+		File file = new File( filename );
+		FileWriter printer = new FileWriter( file );
+		
+		printer.write( this.newEmailsToString() );
+		
+		printer.close();
+	}
+	
+	public String newEmailsToString() {
+		String result = "";
+		
+		for( String temp : this.getNewEmails() ) {
+			result += temp + "\n";
+		}
+		
+		return result;
+	}
+	
 	public String toString() {
 		String result = "First Name,Last Name,Email Address,Meeting Count,Volunteer Event Count,Total Volunteer Hours,Last Meeting,Last Volunteer Event\n";
 		
@@ -101,4 +135,6 @@ public class Organization {
 		
 		return result;
 	}
+
+	
 }
